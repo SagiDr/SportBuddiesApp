@@ -69,53 +69,9 @@ namespace SportBuddiesApp.ViewModels
             {
                 this.ShowNameError = string.IsNullOrEmpty(Name);
             }
-            #endregion
-
-            //#region LastName
-            //private bool showLastNameError;
-
-            ////public bool ShowLastNameError
-            ////{
-            ////    get => showLastNameError;
-            ////    set
-            ////    {
-            ////        showLastNameError = value;
-            ////        OnPropertyChanged("ShowLastNameError");
-            ////    }
-            ////}
-
-            //private string lastName;
-
-            //public string LastName
-            //{
-            //    get => lastName;
-            //    set
-            //    {
-            //        lastName = value;
-            //        ValidateLastName();
-            //        OnPropertyChanged("LastName");
-            //    }
-            //}
-
-            //private string lastNameError;
-
-            //public string LastNameError
-            //{
-            //    get => lastNameError;
-            //    set
-            //    {
-            //        lastNameError = value;
-            //        OnPropertyChanged("LastNameError");
-            //    }
-            //}
-
-            //private void ValidateLastName()
-            //{
-            //    this.ShowLastNameError = string.IsNullOrEmpty(LastName);
-            //}
-            //#endregion
+        #endregion        
             #region Email
-            private bool showEmailError;
+        private bool showEmailError;
 
             public bool ShowEmailError
             {
