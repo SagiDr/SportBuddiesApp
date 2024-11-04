@@ -282,7 +282,7 @@ namespace SportBuddiesApp.ViewModels
                         Name = Name,
                         Email = Email,
                         Password = Password,
-                        IsAdmin = NO,
+                        //IsAdmin = NO,
                     };
 
                     //Call the Register method on the proxy to register the new user
