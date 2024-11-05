@@ -203,7 +203,6 @@ namespace SportBuddiesApp.ViewModels
                 IsPassword = !IsPassword;
             }
             #endregion
-
             #region Photo
 
             private string photoURL;

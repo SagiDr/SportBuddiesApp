@@ -30,28 +30,18 @@
                     </Label>
                 </Grid>
             </Frame>
-            <!-- First Name -->
+            <!-- Full Name -->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Text="First Name" Grid.Column="0" Style="{StaticResource labelNameStyle}" />
+                <Label Text="Name" Grid.Column="0" Style="{StaticResource labelNameStyle}" />
                 <Label Text="{Binding NameError}" IsVisible="{Binding ShowNameError}" Grid.Column="1" Style="{StaticResource labelErrorStyle}" />
             </Grid>
-            <Entry Placeholder="Type First Name" Text="{Binding Name}" Style="{StaticResource entryStyle}" />
+            <Entry Placeholder="Type Full Name" Text="{Binding Name}" Style="{StaticResource entryStyle}" />
 
-            <!-- Last Name -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Last Name" Grid.Column="0" Style="{StaticResource labelNameStyle}" />
-                <Label Text="{Binding LastNameError}" IsVisible="{Binding ShowLastNameError}" Grid.Column="1" Style="{StaticResource labelErrorStyle}" />
-            </Grid>
-            <Entry Placeholder="Type Last Name" Text="{Binding LastName}" Style="{StaticResource entryStyle}" />
-
+           
             <!-- Email -->
             <Grid>
                 <Grid.ColumnDefinitions>
