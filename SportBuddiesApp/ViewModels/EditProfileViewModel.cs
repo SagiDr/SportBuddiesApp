@@ -73,7 +73,6 @@ namespace SportBuddiesApp.ViewModels
             this.ShowNameError = string.IsNullOrEmpty(Name);
         }
         #endregion
-
         #region LastName
         private bool showLastNameError;
 

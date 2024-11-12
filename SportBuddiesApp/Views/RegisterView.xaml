@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportBuddiesApp.Views.RegisterView"
              Title="Register">
+    
     <Grid>
-
-
         <!-- Main Content -->
         <VerticalStackLayout IsEnabled="{Binding NotInServerCall}" Padding="20">
             <!-- Photo -->
@@ -98,4 +97,5 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
     </Grid>
+    
 </ContentPage>

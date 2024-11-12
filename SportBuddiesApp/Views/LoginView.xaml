@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportBuddiesApp.Views.LoginView"
-             Title="Login">
+             Title="">
     <VerticalStackLayout Padding="20" Spacing="15">
 
-        <Entry 
+        <Label Text="Login" TextColor="#495F6E" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="Title"/>
+
+        <Entry HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
         Placeholder="Email"
         Keyboard="Email"
         Text="{Binding Email}" IsEnabled="{Binding NotInServerCall}"/>

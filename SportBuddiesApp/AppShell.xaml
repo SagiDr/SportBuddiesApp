@@ -10,12 +10,12 @@
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
         <ShellContent 
-          Title="GamesHub"
+          Title="GamesHub" Icon="gameshub.png"
           ContentTemplate="{DataTemplate views:GamesHubView}"
           Route="GamesHub"/>
-      
+
         <ShellContent
-        Title="Profile"
+        Title="Profile" Icon="profile.png"
         ContentTemplate="{DataTemplate views:EditProfileView}"
         Route="Profile" />
 

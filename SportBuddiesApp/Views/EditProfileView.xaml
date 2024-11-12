@@ -2,32 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportBuddiesApp.Views.EditProfileView"
-             Title="Profile & Edit Profile">
+             Title="Profile/EditProfile">
 
     <Grid>
-
-
+        
+         <ScrollView>
         <!-- Main Content -->
         <VerticalStackLayout IsEnabled="{Binding NotInServerCall}" Padding="20">
             <!-- Photo -->
-            <Frame BorderColor="Black" Padding="5" Margin="10">
+            <Frame BorderColor="Black" Padding="0" Margin="10">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image x:Name="theImageBug" Source="{Binding PhotoURL}"  HeightRequest="150"/>
-                    <Label Grid.Row="1"
-                      Text="Click Here To Upload Photo!"
-                      TextColor="Blue"
-                      HorizontalOptions="Center"
-                      VerticalOptions="End">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding UploadPhotoCommand}"/>
-                        </Label.GestureRecognizers>
+                      <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+
+                    <Image x:Name="theImageBug" Source="{Binding PhotoURL}" Aspect="AspectFit"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        Margin="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding UploadPhotoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Row="1" 
+                      Text="Click The Photo To Change It!"
+                      TextColor="Black"
+                       BackgroundColor="#70000000"
+                       FontSize="12"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       Margin="0"
+                       Padding="0">
                     </Label>
                 </Grid>
             </Frame>
@@ -42,17 +51,6 @@
             </Grid>
             <Entry Placeholder="Type First Name" Text="{Binding Name}" Style="{StaticResource entryStyle}" />
 
-            <!-- Last Name --><!--
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label Text="Last Name" Grid.Column="0" Style="{StaticResource labelNameStyle}" />
-                <Label Text="{Binding LastNameError}" IsVisible="{Binding ShowLastNameError}" Grid.Column="1" Style="{StaticResource labelErrorStyle}" />
-            </Grid>
-            <Entry Placeholder="Type Last Name" Text="{Binding LastName}" Style="{StaticResource entryStyle}" />-->
-
             <!-- Email -->
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -64,7 +62,7 @@
             </Grid>
             <Entry Placeholder="Type Email" Text="{Binding Email}" Style="{StaticResource entryStyle}" />
 
-            <!-- Password -->
+             <!--Password--> 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -79,14 +77,17 @@
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0" Placeholder="Type Password" Text="{Binding Password}" IsPassword="{Binding IsPassword}" Style="{StaticResource entryStyle}" />
-                <ImageButton Grid.Column="1" HeightRequest="25" Source="passwordeye.jpg" Command="{Binding ShowPasswordCommand}" />
+                <ImageButton Grid.Column="1" HeightRequest="25" Source="passwordeye.jpg" Command="{Binding ShowPasswordCommand}" /> <!--לנסות שתהיה אפשרות שהאייקון משתנה כשלוחצים עליו-->
             </Grid>
 
+                
 
-            <!-- Save and Cancel Buttons -->
+                <!-- Save and Cancel Buttons -->
             <Button Text="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource buttonStyle}" />
 
         </VerticalStackLayout>
+        </ScrollView>
+        
         <!-- Centered ActivityIndicator -->
         <ActivityIndicator IsRunning="{Binding InServerCall}" 
                Color="Red" 
