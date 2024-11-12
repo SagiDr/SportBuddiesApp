@@ -130,9 +130,23 @@ namespace SportBuddiesApp.ViewModels
                     EmailError = "Email is required";
                 }
             }
-            #endregion
+        #endregion
+            #region Gender
+
+        private char gender;
+
+        public char Gender
+        {
+            get => gender;
+            set
+            {
+                gender = value;
+                OnPropertyChanged("Gender");
+            }
+        }
+        #endregion
             #region Password
-            private bool showPasswordError;
+        private bool showPasswordError;
 
             public bool ShowPasswordError
             {

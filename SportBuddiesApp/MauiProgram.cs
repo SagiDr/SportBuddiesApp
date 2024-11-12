@@ -30,9 +30,9 @@ namespace SportBuddiesApp
         public static MauiAppBuilder RegisterPages(this MauiAppBuilder builder)
         {
             builder.Services.AddTransient<LoginView>();
-            //builder.Services.AddTransient<EditProfileView>();
+            builder.Services.AddTransient<EditProfileView>();
             builder.Services.AddTransient<RegisterView>();
-            //builder.Services.AddTransient<TasksView>();
+            builder.Services.AddTransient<GamesHubView>();
             //builder.Services.AddTransient<TaskView>();
             builder.Services.AddTransient<AppShell>();
 
@@ -47,11 +47,11 @@ namespace SportBuddiesApp
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
             builder.Services.AddTransient<LoginViewModel>();
-            //builder.Services.AddTransient<EditProfileViewModel>();
+            builder.Services.AddTransient<EditProfileViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
-            //builder.Services.AddTransient<TasksViewModel>();
+            builder.Services.AddTransient<GamesHubViewModel>();
             //builder.Services.AddTransient<TaskViewModel>();
-            //builder.Services.AddTransient<AppShellViewModel>();
+            builder.Services.AddTransient<AppShellViewModel>();
             return builder;
         }
     }

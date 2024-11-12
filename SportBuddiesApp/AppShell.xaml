@@ -9,24 +9,15 @@
     Title="SportBuddiesApp">
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+        <ShellContent 
+          Title="GamesHub"
+          ContentTemplate="{DataTemplate views:GamesHubView}"
+          Route="GamesHub"/>
+      
         <ShellContent
-            Title="Games" Icon="tasks2.png"
-            ContentTemplate="{DataTemplate views:TasksView}"
-            Route="Tasks" />
-        <ShellContent
-            Title="Profile" Icon="profile.png"
-            ContentTemplate="{DataTemplate views:EditProfileView}"
-            Route="Profile" />
-        <ShellContent
-            Title="Login" ContentTemplate="{DataTemplate views}"
-            
-            />
-
-
-        <!--<ShellContent IsVisible="{Binding IsManager}"
-            Title="Report" Icon="manager2.png"
-            ContentTemplate="{DataTemplate views:ManagerReport}"
-            Route="Report" />-->
+        Title="Profile"
+        ContentTemplate="{DataTemplate views:EditProfileView}"
+        Route="Profile" />
 
     </FlyoutItem>
     <MenuItem Text="Logout" Command="{Binding LogoutCommand}" />
