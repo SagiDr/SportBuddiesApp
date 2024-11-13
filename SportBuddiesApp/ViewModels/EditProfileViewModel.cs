@@ -20,11 +20,11 @@ namespace SportBuddiesApp.ViewModels
             UpdatePhotoURL(theUser.ProfileImageExtention);
             LocalPhotoPath = "";
             IsPassword = true;
+            EyeIconSource = "passwordeye.jpg";
             SaveCommand = new Command(OnSave);
             ShowPasswordCommand = new Command(OnShowPassword);
             UploadPhotoCommand = new Command(OnUploadPhoto);
             NameError = "Name is required";
-            LastNameError = "Last name is required";
             EmailError = "Email is required";
             PasswordError = "Password must be at least 4 characters long and contain letters and numbers";
         }
@@ -71,49 +71,6 @@ namespace SportBuddiesApp.ViewModels
         private void ValidateName()
         {
             this.ShowNameError = string.IsNullOrEmpty(Name);
-        }
-        #endregion
-        #region LastName
-        private bool showLastNameError;
-
-        public bool ShowLastNameError
-        {
-            get => showLastNameError;
-            set
-            {
-                showLastNameError = value;
-                OnPropertyChanged("ShowLastNameError");
-            }
-        }
-
-        private string lastName;
-
-        public string LastName
-        {
-            get => lastName;
-            set
-            {
-                lastName = value;
-                ValidateLastName();
-                OnPropertyChanged("LastName");
-            }
-        }
-
-        private string lastNameError;
-
-        public string LastNameError
-        {
-            get => lastNameError;
-            set
-            {
-                lastNameError = value;
-                OnPropertyChanged("LastNameError");
-            }
-        }
-
-        private void ValidateLastName()
-        {
-            this.ShowLastNameError = string.IsNullOrEmpty(LastName);
         }
         #endregion
         #region Email
@@ -203,6 +160,17 @@ namespace SportBuddiesApp.ViewModels
             }
         }
 
+        private string eyeIconSource;
+        public string EyeIconSource
+        {
+            get => eyeIconSource;
+            set
+            {
+                eyeIconSource = value;
+                OnPropertyChanged("EyeIconSource");
+            }
+        }
+
         private string passwordError;
 
         public string PasswordError
@@ -216,7 +184,7 @@ namespace SportBuddiesApp.ViewModels
         }
 
         private void ValidatePassword()
-        {
+      {
             //Password must include characters and numbers and be longer than 4 characters
             if (string.IsNullOrEmpty(password) ||
                 password.Length < 4 ||
@@ -245,11 +213,13 @@ namespace SportBuddiesApp.ViewModels
         //This method will be called when the password eye icon is pressed
         public void OnShowPassword()
         {
-            //Toggle the password visibility
+            // Toggle the password visibility
             IsPassword = !IsPassword;
+
+            // Change the eye icon source based on IsPassword
+            EyeIconSource = IsPassword ? "passwordeye.jpg" : "passwordeyeopen.jpg";
         }
         #endregion
-
         #region Photo
 
         private string photoURL;
@@ -316,11 +286,10 @@ namespace SportBuddiesApp.ViewModels
         public async void OnSave()
         {
             ValidateName();
-            ValidateLastName();
             ValidateEmail();
             ValidatePassword();
 
-            if (!ShowNameError && !ShowLastNameError && !ShowEmailError && !ShowPasswordError)
+            if (!ShowNameError && !ShowEmailError && !ShowPasswordError)
             {
                 //Update AppUser object with the data from the Edit form
                 User theUser = ((App)App.Current).LoggedInUser;
@@ -353,14 +322,14 @@ namespace SportBuddiesApp.ViewModels
 
                     }
                     InServerCall = false;
-                    await Shell.Current.DisplayAlert("Save Profile", "Profile saved successfully", "ok");
+                    await Shell.Current.DisplayAlert("Success!", "Profile saved successfully", "ok");
                 }
                 else
                 {
                     InServerCall = false;
                     //If the registration failed, display an error message
                     string errorMsg = "Save Profile failed. Please try again.";
-                    await Shell.Current.DisplayAlert("Save Profile", errorMsg, "ok");
+                    await Shell.Current.DisplayAlert("Fail", errorMsg, "ok");
                 }
             }
         }

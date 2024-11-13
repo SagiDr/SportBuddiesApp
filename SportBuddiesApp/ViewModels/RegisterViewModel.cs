@@ -19,6 +19,7 @@ namespace SportBuddiesApp.ViewModels
                 ShowPasswordCommand = new Command(OnShowPassword);
                 UploadPhotoCommand = new Command(OnUploadPhoto);
                 PhotoURL = proxy.GetDefaultProfilePhotoUrl();
+                EyeIconSource = "passwordeye.jpg";
                 LocalPhotoPath = "";
                 IsPassword = true;
                 NameError = "Full name is required";
@@ -171,7 +172,18 @@ namespace SportBuddiesApp.ViewModels
                 }
             }
 
-            private string passwordError;
+        private string eyeIconSource;
+        public string EyeIconSource
+        {
+            get => eyeIconSource;
+            set
+            {
+                eyeIconSource = value;
+                OnPropertyChanged("EyeIconSource");
+            }
+        }
+
+        private string passwordError;
 
             public string PasswordError
             {
@@ -210,16 +222,19 @@ namespace SportBuddiesApp.ViewModels
             }
             //This command will trigger on pressing the password eye icon
             public Command ShowPasswordCommand { get; }
-            //This method will be called when the password eye icon is pressed
-            public void OnShowPassword()
-            {
-                //Toggle the password visibility
-                IsPassword = !IsPassword;
-            }
-            #endregion
-            #region Photo
+        //This method will be called when the password eye icon is pressed
+        public void OnShowPassword()
+        {
+            // Toggle the password visibility
+            IsPassword = !IsPassword;
 
-            private string photoURL;
+            // Change the eye icon source based on IsPassword
+            EyeIconSource = IsPassword ? "passwordeye.jpg"  : "passwordeyeopen.jpg";
+        }
+        #endregion
+        #region Photo
+
+        private string photoURL;
 
             public string PhotoURL
             {

@@ -77,7 +77,7 @@
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
                 <Entry Grid.Column="0" Placeholder="Type Password" Text="{Binding Password}" IsPassword="{Binding IsPassword}" Style="{StaticResource entryStyle}" />
-                <ImageButton Grid.Column="1" HeightRequest="25" Source="passwordeye.jpg" Command="{Binding ShowPasswordCommand}" /> <!--לנסות שתהיה אפשרות שהאייקון משתנה כשלוחצים עליו-->
+                    <ImageButton Grid.Column="1" HeightRequest="25" Source="{Binding EyeIconSource}" Command="{Binding ShowPasswordCommand}" /> <!--לנסות שתהיה אפשרות שהאייקון משתנה כשלוחצים עליו-->
             </Grid>
 
                 
