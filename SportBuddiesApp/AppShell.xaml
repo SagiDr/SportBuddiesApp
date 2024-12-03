@@ -19,6 +19,11 @@
         ContentTemplate="{DataTemplate views:EditProfileView}"
         Route="Profile" />
 
+        <ShellContent
+        Title="Create Game"
+        ContentTemplate="{DataTemplate views:CreateGameView}"
+        Route="Create Game"/>
+
     </FlyoutItem>
     <MenuItem Text="Logout" Command="{Binding LogoutCommand}" />
 

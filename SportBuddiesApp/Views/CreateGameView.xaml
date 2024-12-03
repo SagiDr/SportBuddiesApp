@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SportBuddiesApp.ViewModels"
+             x:Class="SportBuddiesApp.Views.CreateGameView"
+             Title="Create Game">
+    <ContentPage.BindingContext>
+        <vm:CreateGameViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <!-- Game Type -->
+            <Label Text="Game Type:" FontSize="Medium" TextColor="Black" />
+            <StackLayout>
+                <RadioButton GroupName="GameType" Content="Basketball" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Basketball}" />
+                <RadioButton GroupName="GameType" Content="Soccer" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Soccer}" />
+                <RadioButton GroupName="GameType" Content="Volleyball" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Volleyball}" />
+            </StackLayout>
+
+            <!-- Date -->
+            <Label Text="Date:" FontSize="Medium" TextColor="Black" />
+            <DatePicker Date="{Binding GameDate}" />
+
+            <!-- Time -->
+            <Label Text="Select Time:" FontSize="Medium" TextColor="Black" />
+            <TimePicker Time="{Binding GameTime}" />
+
+            <!-- Location -->
+            <Entry Text="{Binding Location}" Placeholder="Enter location" TextColor="Black" />
+            <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" BackgroundColor="Blue" TextColor="White" />
+
+            <!-- Game Mode -->
+            <Label Text="Select Game Mode:" FontSize="Medium" TextColor="Black" />
+            <StackLayout>
+                <RadioButton GroupName="GameMode" Content="Casual" IsChecked="{Binding GameMode, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Casual}" />
+                <RadioButton GroupName="GameMode" Content="Competitive" IsChecked="{Binding GameMode, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Competitive}" />
+            </StackLayout>
+
+            <!-- Public or Private -->
+            <Label Text="Select Game Visibility:" FontSize="Medium" TextColor="Black" />
+            <StackLayout>
+                <RadioButton GroupName="GameVisibility" Content="Public" IsChecked="{Binding GameVisibility, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Public}" />
+                <RadioButton GroupName="GameVisibility" Content="Private" IsChecked="{Binding GameVisibility, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Private}" />
+            </StackLayout>
+
+            <!-- Create Button -->
+            <Button Text="Create Game" Command="{Binding CreateGameCommand}" BackgroundColor="Green" TextColor="White" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
