@@ -57,11 +57,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\basketball_logo.png" />
 	  <None Remove="Resources\Images\gameshub.png" />
 	  <None Remove="Resources\Images\logout.png" />
 	  <None Remove="Resources\Images\passwordeye.jpg" />
 	  <None Remove="Resources\Images\passwordeyeopen.jpg" />
 	  <None Remove="Resources\Images\profile.png" />
+	  <None Remove="Resources\Images\soccer_logo.png" />
+	  <None Remove="Resources\Images\volleyball_logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,6 +84,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RadioButtonTest.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\RegisterView.xaml">

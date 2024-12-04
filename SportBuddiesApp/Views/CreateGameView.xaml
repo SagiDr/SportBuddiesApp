@@ -7,16 +7,36 @@
     <ContentPage.BindingContext>
         <vm:CreateGameViewModel />
     </ContentPage.BindingContext>
-
-    <ScrollView>
+        <ScrollView>
         <StackLayout Padding="20" Spacing="15">
 
             <!-- Game Type -->
-            <Label Text="Game Type:" FontSize="Medium" TextColor="Black" />
-            <StackLayout>
-                <RadioButton GroupName="GameType" Content="Basketball" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Basketball}" />
-                <RadioButton GroupName="GameType" Content="Soccer" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Soccer}" />
-                <RadioButton GroupName="GameType" Content="Volleyball" IsChecked="{Binding GameType, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Volleyball}" />
+            <Label Text="Select game type?" FontSize="Medium" TextColor="Black" />
+            <StackLayout RadioButtonGroup.GroupName="GameType" Orientation="Horizontal">
+                <RadioButton Value="Basketball">
+                    <RadioButton.Content>
+                        <VerticalStackLayout>
+                            <Image Source="basketball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Basketball" HorizontalOptions="Center" VerticalOptions="End" />
+                        </VerticalStackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Soccer">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Image Source="soccer_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Soccer" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Volleyball">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Image Source="volleyball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Label Text="Volleyball" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
             </StackLayout>
 
             <!-- Date -->
@@ -33,16 +53,40 @@
 
             <!-- Game Mode -->
             <Label Text="Select Game Mode:" FontSize="Medium" TextColor="Black" />
-            <StackLayout>
-                <RadioButton GroupName="GameMode" Content="Casual" IsChecked="{Binding GameMode, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Casual}" />
-                <RadioButton GroupName="GameMode" Content="Competitive" IsChecked="{Binding GameMode, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Competitive}" />
+            <StackLayout RadioButtonGroup.GroupName="GameMode" Orientation="Horizontal">
+                <RadioButton Value="Casual">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Label Text="Casual" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Competitive">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Label Text="Competitive" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
             </StackLayout>
 
             <!-- Public or Private -->
             <Label Text="Select Game Visibility:" FontSize="Medium" TextColor="Black" />
-            <StackLayout>
-                <RadioButton GroupName="GameVisibility" Content="Public" IsChecked="{Binding GameVisibility, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Public}" />
-                <RadioButton GroupName="GameVisibility" Content="Private" IsChecked="{Binding GameVisibility, Converter={StaticResource StringToBooleanConverter}, ConverterParameter=Private}" />
+            <StackLayout RadioButtonGroup.GroupName="GameVisibility" Orientation="Horizontal">
+                <RadioButton Value="Public">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Label Text="Public" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Value="Private">
+                    <RadioButton.Content>
+                        <StackLayout>
+                            <Label Text="Private" HorizontalOptions="Center" VerticalOptions="End" />
+                        </StackLayout>
+                    </RadioButton.Content>
+                </RadioButton>
             </StackLayout>
 
             <!-- Create Button -->

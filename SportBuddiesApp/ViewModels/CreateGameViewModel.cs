@@ -14,7 +14,7 @@ using SportBuddiesApp.Services;
 
 namespace SportBuddiesApp.ViewModels
 {
-    public class CreateGameViewModel
+    public class CreateGameViewModel:ViewModelBase
     {
         private string _gameType;
         private DateTime _gameDate;
@@ -113,7 +113,14 @@ namespace SportBuddiesApp.ViewModels
 
                 if (location != null)
                 {
-                    Location = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
+                    var p = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
+                    Placemark? pp = p.FirstOrDefault();
+                    if (pp != null)
+                    {
+                        this.Location = pp.Thoroughfare + ", " + pp.Locality + ", " + pp.AdminArea + ", " + pp.CountryName;
+                    }
+                    else
+                        Location = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
                 }
                 else
                 {
@@ -137,11 +144,6 @@ namespace SportBuddiesApp.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
     }
 }

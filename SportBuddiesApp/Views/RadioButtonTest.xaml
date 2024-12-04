@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportBuddiesApp.Views.RadioButtonTest"
+             Title="RadioButtonTest">
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Select Game Type:" FontSize="Medium" TextColor="Black" />
+        <StackLayout RadioButtonGroup.GroupName="GameType" Orientation="Horizontal">
+            <RadioButton Value="Basketball">
+                <RadioButton.Content>
+                    <ContentView>
+                    <StackLayout>
+                        <Image Source="basketball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Basketball" HorizontalOptions="Center" VerticalOptions="End" />
+                    </StackLayout>
+                    </ContentView>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Value="Soccer">
+                <RadioButton.Content>
+                    <StackLayout>
+                        <Image Source="Resources/Images/soccer_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Soccer" HorizontalOptions="Center" VerticalOptions="End" />
+                    </StackLayout>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Value="Volleyball">
+                <RadioButton.Content>
+                    <StackLayout>
+                        <Image Source="Resources/Images/volleyball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Volleyball" HorizontalOptions="Center" VerticalOptions="End" />
+                    </StackLayout>
+                </RadioButton.Content>
+            </RadioButton>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
