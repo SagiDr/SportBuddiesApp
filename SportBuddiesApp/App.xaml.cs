@@ -5,17 +5,16 @@ using SportBuddiesApp.Views;
 namespace SportBuddiesApp
 {
     public partial class App : Application
-    { //Application level variables
+    { 
         public User? LoggedInUser { get; set; }
-        //public List<UrgencyLevel> UrgencyLevels { get; set; } = new List<UrgencyLevel>();
         private SportBuddiesWebAPIProxy proxy;
         public App(IServiceProvider serviceProvider, SportBuddiesWebAPIProxy proxy)
         {
+            //LoadBasicDataFromServer();
+            //Start with the Login View
             this.proxy = proxy;
             InitializeComponent();
             LoggedInUser = null;
-            //LoadBasicDataFromServer();
-            //Start with the Login View
             MainPage = new NavigationPage(serviceProvider.GetService<LoginView>());
         }
 

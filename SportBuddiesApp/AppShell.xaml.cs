@@ -18,5 +18,6 @@ namespace SportBuddiesApp
             Routing.RegisterRoute("login", typeof(LoginView));
             Routing.RegisterRoute("register", typeof(RegisterView));
         }
+
     }
 }
