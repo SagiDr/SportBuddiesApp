@@ -2,41 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:SportBuddiesApp.ViewModels"
+             xmlns:local="clr-namespace:SportBuddiesApp.Controls"
              x:Class="SportBuddiesApp.Views.CreateGameView"
              Title="Create Game">
     <ContentPage.BindingContext>
         <vm:CreateGameViewModel />
     </ContentPage.BindingContext>
-        <ScrollView>
-        <StackLayout Padding="20" Spacing="15">
-
+    <ScrollView>
+        <StackLayout Padding="10" Spacing="15">
             <!-- Game Type -->
             <Label Text="Select game type?" FontSize="Medium" TextColor="Black" />
-            <StackLayout RadioButtonGroup.GroupName="GameType" Orientation="Horizontal">
-                <RadioButton Value="Basketball">
-                    <RadioButton.Content>
-                        <VerticalStackLayout>
-                            <Image Source="basketball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                            <Label Text="Basketball" HorizontalOptions="Center" VerticalOptions="End" />
-                        </VerticalStackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Value="Soccer">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Image Source="soccer_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                            <Label Text="Soccer" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Value="Volleyball">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Image Source="volleyball_logo.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                            <Label Text="Volleyball" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
+            <StackLayout local:RadioButtonGroup.GroupName="GameType" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameType}">
+                <HorizontalStackLayout>
+                    <Frame Margin="5" WidthRequest="100" HeightRequest="150">
+                        <local:ImageRadioButton Text="Basketball" ImageSource="basketball_logo.png "  IsChecked="{Binding BasketballIsChecked}" Value="Basketball" GroupName="GameType" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                    <Frame Margin="5" WidthRequest="100" HeightRequest="150">
+                        <local:ImageRadioButton Text="Soccer" ImageSource="soccer_logo.png" IsChecked="{Binding SoccerIsChecked}" Value="Soccer" GroupName="GameType" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                    <Frame Margin="5" WidthRequest="100" HeightRequest="150">
+                        <local:ImageRadioButton Text="Volleyball" ImageSource="volleyball_logo.png" IsChecked="{Binding VolleyballIsChecked}" Value="Volleyball" GroupName="GameType" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                </HorizontalStackLayout>
+                <Label Text="{Binding SelectedGameType}"></Label>
             </StackLayout>
 
             <!-- Date -->
@@ -53,40 +41,30 @@
 
             <!-- Game Mode -->
             <Label Text="Select Game Mode:" FontSize="Medium" TextColor="Black" />
-            <StackLayout RadioButtonGroup.GroupName="GameMode" Orientation="Horizontal">
-                <RadioButton Value="Casual">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Label Text="Casual" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Value="Competitive">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Label Text="Competitive" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
+            <StackLayout local:RadioButtonGroup.GroupName="GameMode" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameMode}">
+                <HorizontalStackLayout>
+                    <Frame Margin="5" WidthRequest="100" HeightRequest="150">
+                        <local:ImageRadioButton Text="Casual" ImageSource="casual_logo.png" IsChecked="{Binding CasualIsChecked}" Value="Casual" GroupName="GameMode" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                    <Frame Margin="5" WidthRequest="100" HeightRequest="150">
+                        <local:ImageRadioButton Text="Competitive" ImageSource="competitive_logo.png" IsChecked="{Binding CompetitiveIsChecked}" Value="Competitive" GroupName="GameMode" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                </HorizontalStackLayout>
+                <Label Text="{Binding SelectedGameMode}"></Label>
             </StackLayout>
 
             <!-- Public or Private -->
             <Label Text="Select Game Visibility:" FontSize="Medium" TextColor="Black" />
-            <StackLayout RadioButtonGroup.GroupName="GameVisibility" Orientation="Horizontal">
-                <RadioButton Value="Public">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Label Text="Public" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
-                <RadioButton Value="Private">
-                    <RadioButton.Content>
-                        <StackLayout>
-                            <Label Text="Private" HorizontalOptions="Center" VerticalOptions="End" />
-                        </StackLayout>
-                    </RadioButton.Content>
-                </RadioButton>
+            <StackLayout local:RadioButtonGroup.GroupName="GameVisibility" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameVisibility}">
+                <HorizontalStackLayout>
+                    <Frame Margin="10" WidthRequest="100" HeightRequest="100">
+                        <local:ImageRadioButton Text="Public" ImageSource="publiclogo.png" IsChecked="{Binding PublicIsChecked}" Value="Public" GroupName="GameVisibility" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                    <Frame Margin="10" WidthRequest="200" HeightRequest="100">
+                        <local:ImageRadioButton Text="Private" ImageSource="privatelogo.png" IsChecked="{Binding PrivateIsChecked}" Value="Private" GroupName="GameVisibility" WidthRequest="80" HeightRequest="80"/>
+                    </Frame>
+                </HorizontalStackLayout>
+                <Label Text="{Binding SelectedGameVisibility}"></Label>
             </StackLayout>
 
             <!-- Create Button -->

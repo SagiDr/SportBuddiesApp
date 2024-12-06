@@ -5,8 +5,7 @@
              Title="Profile/EditProfile">
 
     <Grid>
-        
-         <ScrollView>
+        <ScrollView>
         <!-- Main Content -->
         <VerticalStackLayout IsEnabled="{Binding NotInServerCall}" Padding="20">
             <!-- Photo -->
@@ -80,12 +79,9 @@
                     <ImageButton Grid.Column="1" HeightRequest="25" Source="{Binding EyeIconSource}" Command="{Binding ShowPasswordCommand}" /> <!--לנסות שתהיה אפשרות שהאייקון משתנה כשלוחצים עליו-->
             </Grid>
 
-                
-
-                <!-- Save and Cancel Buttons -->
-            <Button Text="Save" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource buttonStyle}" />
-
-        </VerticalStackLayout>
+                <!-- Save Button -->
+                <Button Text="Save Changes" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource buttonStyle}" />
+            </VerticalStackLayout>
         </ScrollView>
         
         <!-- Centered ActivityIndicator -->

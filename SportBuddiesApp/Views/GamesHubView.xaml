@@ -5,8 +5,9 @@
              Title="GamesHubView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Not developed yet! :)"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            FontSize="Large"/>
     </VerticalStackLayout>
 </ContentPage>
