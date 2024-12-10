@@ -22,9 +22,12 @@ namespace SportBuddiesApp.ViewModels
         private string _location;
         private string _gameMode;
         private string _gameVisibility;
+        private SportBuddiesWebAPIProxy proxy;
 
-        public CreateGameViewModel()
+
+        public CreateGameViewModel(SportBuddiesWebAPIProxy proxy)
         {
+            this.proxy = proxy;
             GameTypes = new ObservableCollection<string> { "Basketball", "Soccer", "Volleyball" };
             GameModes = new ObservableCollection<string> { "Casual", "Competitive" };
             GameVisibilities = new ObservableCollection<string> { "Public", "Private" };
@@ -134,9 +137,14 @@ namespace SportBuddiesApp.ViewModels
             }
         }
 
-        private void OnCreateGame()
+        private async void OnCreateGame()
         {
-            // TODO: Add logic to create the game with the provided details
+            // TODO: add game detailes attrebiutes inside proxy.AddGame(new GameDetails());
+
+            //Call the Register method on the proxy to register the new user
+            InServerCall = true;
+            GameDetails gameDetails = await proxy.AddGame(new GameDetails(/* here */));
+            InServerCall = false;
 
             if (Application.Current?.MainPage != null)
             {

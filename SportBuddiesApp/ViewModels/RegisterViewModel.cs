@@ -232,7 +232,7 @@ namespace SportBuddiesApp.ViewModels
             EyeIconSource = IsPassword ? "passwordeye.jpg"  : "passwordeyeopen.jpg";
         }
         #endregion
-        #region Photo
+            #region Photo
 
         private string photoURL;
 
