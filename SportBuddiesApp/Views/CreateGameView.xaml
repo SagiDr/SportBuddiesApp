@@ -5,9 +5,6 @@
              xmlns:local="clr-namespace:SportBuddiesApp.Controls"
              x:Class="SportBuddiesApp.Views.CreateGameView"
              Title="Create Game">
-    <ContentPage.BindingContext>
-        <vm:CreateGameViewModel />
-    </ContentPage.BindingContext>
     <ScrollView>
         <StackLayout Padding="10" Spacing="15">
             <!-- Game Type -->

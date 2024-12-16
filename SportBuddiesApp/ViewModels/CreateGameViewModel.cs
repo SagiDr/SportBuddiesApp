@@ -143,7 +143,12 @@ namespace SportBuddiesApp.ViewModels
 
             //Call the Register method on the proxy to register the new user
             InServerCall = true;
-            GameDetails gameDetails = await proxy.AddGame(new GameDetails(/* here */));
+            GameDetails gameDetails = await proxy.AddGame(new GameDetails()
+            {
+                GameType = int.TryParse(this.GameType, out int gameType) ? gameType : (int?)null,
+                Location = this.Location
+                // Add other properties if they exist in GameDetails class
+            });
             InServerCall = false;
 
             if (Application.Current?.MainPage != null)

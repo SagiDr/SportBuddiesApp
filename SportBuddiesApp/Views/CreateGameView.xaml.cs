@@ -1,10 +1,12 @@
 namespace SportBuddiesApp.Views;
 using Microsoft.Maui.Controls;
+using SportBuddiesApp.ViewModels;
 
 public partial class CreateGameView : ContentPage
 {
-	public CreateGameView()
+	public CreateGameView(CreateGameViewModel vm)
 	{
-		InitializeComponent();
+		this.BindingContext = vm;	
+        InitializeComponent();
 	}
 }
