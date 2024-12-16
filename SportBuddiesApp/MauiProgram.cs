@@ -50,6 +50,8 @@ namespace SportBuddiesApp
             builder.Services.AddTransient<EditProfileViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
             builder.Services.AddTransient<GamesHubViewModel>();
+            builder.Services.AddTransient<CreateGameView>();
+            builder.Services.AddTransient<CreateGameViewModel>();
             //builder.Services.AddTransient<TaskViewModel>();
             builder.Services.AddTransient<AppShellViewModel>();
             return builder;
