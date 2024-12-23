@@ -12,13 +12,13 @@
             <StackLayout local:RadioButtonGroup.GroupName="GameType" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameType}">
                 <HorizontalStackLayout>
                     <Frame Margin="5">
-                        <local:ImageRadioButton Text="Basketball" ImageSource="basketball_logo.png" IsChecked="{Binding BasketballIsChecked}" Value="Basketball" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
+                        <local:ImageRadioButton Text="Basketball" ImageSource="basketball_logo.png" IsChecked="{Binding BasketballIsChecked}" Value="1" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
                     <Frame Margin="5">
-                        <local:ImageRadioButton Text="Soccer" ImageSource="soccer_logo.png" IsChecked="{Binding SoccerIsChecked}" Value="Soccer" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
+                        <local:ImageRadioButton Text="Soccer" ImageSource="soccer_logo.png" IsChecked="{Binding SoccerIsChecked}" Value="2" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
                     <Frame Margin="5">
-                        <local:ImageRadioButton Text="Volleyball" ImageSource="volleyball_logo.png" IsChecked="{Binding VolleyballIsChecked}" Value="Volleyball" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
+                        <local:ImageRadioButton Text="Volleyball" ImageSource="volleyball_logo.png" IsChecked="{Binding VolleyballIsChecked}" Value="3" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
                 </HorizontalStackLayout>
                 <Label Text="{Binding SelectedGameType}"></Label>
@@ -41,10 +41,10 @@
             <StackLayout local:RadioButtonGroup.GroupName="GameMode" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameMode}">
                 <HorizontalStackLayout>
                     <Frame Margin="5">
-                        <RadioButton Content="Casual" IsChecked="{Binding CasualIsChecked}" Value="Casual" GroupName="GameMode" />
+                        <RadioButton Content="Casual" IsChecked="{Binding CasualIsChecked}" Value="1" GroupName="GameMode" />
                     </Frame>
                     <Frame Margin="5">
-                        <RadioButton Content="Competitive" IsChecked="{Binding CompetitiveIsChecked}" Value="Competitive" GroupName="GameMode" />
+                        <RadioButton Content="Competitive" IsChecked="{Binding CompetitiveIsChecked}" Value="2" GroupName="GameMode" />
                     </Frame>
                 </HorizontalStackLayout>
                 <Label Text="{Binding SelectedGameMode}"></Label>

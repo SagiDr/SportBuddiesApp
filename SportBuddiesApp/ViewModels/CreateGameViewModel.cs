@@ -139,15 +139,15 @@ namespace SportBuddiesApp.ViewModels
 
         private async void OnCreateGame()
         {
-            // TODO: add game detailes attrebiutes inside proxy.AddGame(new GameDetails());
-
-            //Call the Register method on the proxy to register the new user
             InServerCall = true;
             GameDetails gameDetails = await proxy.AddGame(new GameDetails()
             {
                 GameType = int.TryParse(this.GameType, out int gameType) ? gameType : (int?)null,
-                Location = this.Location
-                // Add other properties if they exist in GameDetails class
+                Location = this.Location,
+                Date = DateOnly.FromDateTime(this.GameDate),
+                Time = TimeOnly.FromTimeSpan(this.GameTime),
+                Competitive = this.GameMode,
+                State = this.GameVisibility
             });
             InServerCall = false;
 
@@ -155,8 +155,6 @@ namespace SportBuddiesApp.ViewModels
             {
                 Application.Current.MainPage.DisplayAlert("Game Created", "Your game has been created successfully!", "OK");
             }
-        }
-
-        
+        }  
     }
 }
