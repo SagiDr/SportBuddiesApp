@@ -2,41 +2,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportBuddiesApp.Views.RegisterView"
-             Title="Register">
-    
-    <Grid>
+             Title="Register"
+             BackgroundColor="#f0f0f5">
 
+    <Grid>
         <ScrollView>
-         <!-- Main Content -->
+            <!-- Main Content -->
             <VerticalStackLayout IsEnabled="{Binding NotInServerCall}" Padding="20">
                 <!-- Photo -->
-                <Frame BorderColor="Black" Padding="5" Margin="5" >
+                <Frame BorderColor="#007AFF" Padding="5" Margin="5" CornerRadius="10" HasShadow="True">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image x:Name="theImageBug" Source="{Binding PhotoURL}" Aspect="AspectFit"
-                               
-                          HorizontalOptions="Fill"
-                          VerticalOptions="Fill"
-                          Margin="0">
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               Margin="0">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding UploadPhotoCommand}" />
                             </Image.GestureRecognizers>
                         </Image>
                         <Label Grid.Row="1" 
-                           Text="Click The Photo To Change It!"
-                           TextColor="Black"
-                           BackgroundColor="#70000000"
-                           FontSize="12"
-                           HorizontalOptions="Center"
-                           VerticalOptions="End"
-                           Margin="0"
-                           Padding="0">
+                               Text="Click The Photo To Change It!"
+                               TextColor="White"
+                               BackgroundColor="#70000000"
+                               FontSize="12"
+                               HorizontalOptions="Center"
+                               VerticalOptions="End"
+                               Margin="0"
+                               Padding="0">
                         </Label>
                     </Grid>
                 </Frame>
@@ -50,8 +48,6 @@
                     <Label Text="{Binding NameError}" IsVisible="{Binding ShowNameError}" Grid.Column="1" Style="{StaticResource labelErrorStyle}" />
                 </Grid>
                 <Entry Placeholder="Type Full Name" Text="{Binding Name}" Style="{StaticResource entryStyle}" />
-
-
                 <!-- Email -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -65,15 +61,11 @@
 
                 <!--Gender -->
                 <StackLayout RadioButtonGroup.GroupName="gender" RadioButtonGroup.SelectedValue="{Binding Gender}" Margin="10">
-                    <Label Text="Gender" />
-                    <RadioButton Content="Female" Value='F' />
-                    <RadioButton Content="Male" Value='M'/>
-                    <RadioButton Content="Other" Value='O' IsChecked="True" />
+                    <Label Text="Gender" Style="{StaticResource labelNameStyle}" />
+                    <RadioButton Content="Female" Value='F' Style="{StaticResource radioButtonStyle}" />
+                    <RadioButton Content="Male" Value='M' Style="{StaticResource radioButtonStyle}" />
+                    <RadioButton Content="Other" Value='O' IsChecked="True" Style="{StaticResource radioButtonStyle}" />
                 </StackLayout>
-
-
-
-
                 <!-- Password -->
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -99,15 +91,14 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Button Text="Register" Command="{Binding RegisterCommand}" IsEnabled="{Binding NotInServerCall}" Grid.Column="1" Style="{StaticResource buttonStyle}" />
-                    <Button Text="Cancel" Command="{Binding CancelCommand}" IsEnabled="{Binding NotInServerCall}" Grid.Column="0" Style="{StaticResource buttonStyle}"/>
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" IsEnabled="{Binding NotInServerCall}" Grid.Column="0" Style="{StaticResource buttonStyle}" />
                 </Grid>
             </VerticalStackLayout>
         </ScrollView>
         <!-- Centered ActivityIndicator -->
         <ActivityIndicator IsRunning="{Binding InServerCall}" 
-                   Color="Red" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
+         Color="#007AFF" 
+         VerticalOptions="Center" 
+         HorizontalOptions="Center" />
     </Grid>
-    
 </ContentPage>

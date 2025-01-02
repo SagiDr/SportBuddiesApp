@@ -4,72 +4,84 @@
              xmlns:vm="clr-namespace:SportBuddiesApp.ViewModels"
              xmlns:local="clr-namespace:SportBuddiesApp.Controls"
              x:Class="SportBuddiesApp.Views.CreateGameView"
-             Title="Create Game">
+             Title="Create Game"
+             BackgroundColor="#f0f0f0">
     <ScrollView>
-        <StackLayout Padding="10" Spacing="15">
+        <StackLayout Padding="20" Spacing="20">
             <!-- Game Name -->
-            <Label Text="Enter game name:" FontSize="Medium" TextColor="Black" />
-            <Entry Text="{Binding GameName}" Placeholder="Enter game name" TextColor="Black" />
-
+            <Label Text="Game name:" FontSize="Medium" TextColor="#333" />
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
+             <Entry Text="{Binding GameName}" Placeholder="Enter game name" TextColor="#333" BackgroundColor="White" />
+            </Frame>
             <!-- Game Type -->
-            <Label Text="Select game type:" FontSize="Medium" TextColor="Black" />
+            <Label Text="Select game type:" FontSize="Medium" TextColor="#333" />
             <StackLayout local:RadioButtonGroup.GroupName="GameType" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameType}">
                 <HorizontalStackLayout>
-                    <Frame Margin="5">
+                    <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <local:ImageRadioButton Text="Basketball" ImageSource="basketball_logo.png" IsChecked="{Binding BasketballIsChecked}" Value="1" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
-                    <Frame Margin="5">
+                    <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <local:ImageRadioButton Text="Soccer" ImageSource="soccer_logo.png" IsChecked="{Binding SoccerIsChecked}" Value="2" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
-                    <Frame Margin="5">
+                    <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <local:ImageRadioButton Text="Volleyball" ImageSource="volleyball_logo.png" IsChecked="{Binding VolleyballIsChecked}" Value="3" GroupName="GameType" HeightRequest="150" WidthRequest="80"/>
                     </Frame>
                 </HorizontalStackLayout>
-                <Label Text="{Binding SelectedGameType}"></Label>
+                <Label Text="{Binding SelectedGameType}" TextColor="#333"></Label>
             </StackLayout>
 
             <!-- Date -->
-            <Label Text="Select Date:" FontSize="Medium" TextColor="Black" />
-            <DatePicker Date="{Binding GameDate}" />
+            <Label Text="Select Date:" FontSize="Medium" TextColor="#333" />
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
+                <DatePicker Date="{Binding GameDate}" BackgroundColor="White" />
+            </Frame>
 
             <!-- Time -->
-            <Label Text="Select Time:" FontSize="Medium" TextColor="Black" />
-            <TimePicker Time="{Binding GameTime}" />
+            <Label Text="Select Time:" FontSize="Medium" TextColor="#333" />
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
+                <TimePicker Time="{Binding GameTime}" BackgroundColor="White" />
+            </Frame>
 
             <!-- Location -->
-            <Label Text="Enter location:" FontSize="Medium" TextColor="Black" />
-            <Entry Text="{Binding Location}" Placeholder="Enter location" TextColor="Black" />
-            <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" BackgroundColor="Blue" TextColor="White" />
+            <Label Text="Location:" FontSize="Medium" TextColor="#333" />
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
+                <Entry Text="{Binding Location}" Placeholder="Enter location" TextColor="#333" BackgroundColor="White" />
+            </Frame>
+            <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" BackgroundColor="#2196F3" TextColor="White" CornerRadius="25" Padding="15" FontAttributes="Bold" />
 
             <!-- Game Mode -->
-            <Label Text="Select Game Mode:" FontSize="Medium" TextColor="Black" />
+            <Label Text="Select Game Mode:" FontSize="Medium" TextColor="#333" />
             <StackLayout local:RadioButtonGroup.GroupName="GameMode" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameMode}">
                 <HorizontalStackLayout>
-                    <Frame Margin="5">
+                    <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <RadioButton Content="Casual" IsChecked="{Binding CasualIsChecked}" Value="1" GroupName="GameMode" />
                     </Frame>
-                    <Frame Margin="5">
+                    <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <RadioButton Content="Competitive" IsChecked="{Binding CompetitiveIsChecked}" Value="2" GroupName="GameMode" />
                     </Frame>
                 </HorizontalStackLayout>
-                <Label Text="{Binding SelectedGameMode}"></Label>
+                <Label Text="{Binding SelectedGameMode}" TextColor="#333"></Label>
             </StackLayout>
 
             <!-- Public or Private -->
-            <Label Text="Select Game Visibility:" FontSize="Medium" TextColor="Black" />
+            <Label Text="Select Game Visibility:" FontSize="Medium" TextColor="#333" />
             <StackLayout local:RadioButtonGroup.GroupName="GameVisibility" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameVisibility}">
                 <HorizontalStackLayout>
-                    <Frame Margin="10">
+                    <Frame Margin="10" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <local:ImageRadioButton Text="Public" ImageSource="publiclogo.png" IsChecked="{Binding PublicIsChecked}" Value="Public" GroupName="GameVisibility" HeightRequest="100" WidthRequest="80"/>
                     </Frame>
-                    <Frame Margin="10">
+                    <Frame Margin="10" BackgroundColor="White" CornerRadius="10" HasShadow="True">
                         <local:ImageRadioButton Text="Private" ImageSource="privatelogo.png" IsChecked="{Binding PrivateIsChecked}" Value="Private" GroupName="GameVisibility" HeightRequest="100" WidthRequest="80"/>
                     </Frame>
                 </HorizontalStackLayout>
             </StackLayout>
 
             <!-- Create Button -->
-            <Button Text="Create Game" Command="{Binding CreateGameCommand}" BackgroundColor="Green" TextColor="White" />
+            <Button Text="Create Game" Command="{Binding CreateGameCommand}" BackgroundColor="Green" TextColor="White" CornerRadius="25" Padding="15" FontAttributes="Bold">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Opacity="0.5" Offset="5,5" Radius="10"/>
+                </Button.Shadow>
+            </Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>
