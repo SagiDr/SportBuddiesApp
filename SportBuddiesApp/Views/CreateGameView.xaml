@@ -7,8 +7,12 @@
              Title="Create Game">
     <ScrollView>
         <StackLayout Padding="10" Spacing="15">
+            <!-- Game Name -->
+            <Label Text="Enter game name:" FontSize="Medium" TextColor="Black" />
+            <Entry Text="{Binding GameName}" Placeholder="Enter game name" TextColor="Black" />
+
             <!-- Game Type -->
-            <Label Text="Select game type?" FontSize="Medium" TextColor="Black" />
+            <Label Text="Select game type:" FontSize="Medium" TextColor="Black" />
             <StackLayout local:RadioButtonGroup.GroupName="GameType" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameType}">
                 <HorizontalStackLayout>
                     <Frame Margin="5">
@@ -25,7 +29,7 @@
             </StackLayout>
 
             <!-- Date -->
-            <Label Text="Date:" FontSize="Medium" TextColor="Black" />
+            <Label Text="Select Date:" FontSize="Medium" TextColor="Black" />
             <DatePicker Date="{Binding GameDate}" />
 
             <!-- Time -->
@@ -33,6 +37,7 @@
             <TimePicker Time="{Binding GameTime}" />
 
             <!-- Location -->
+            <Label Text="Enter location:" FontSize="Medium" TextColor="Black" />
             <Entry Text="{Binding Location}" Placeholder="Enter location" TextColor="Black" />
             <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" BackgroundColor="Blue" TextColor="White" />
 
@@ -61,12 +66,10 @@
                         <local:ImageRadioButton Text="Private" ImageSource="privatelogo.png" IsChecked="{Binding PrivateIsChecked}" Value="Private" GroupName="GameVisibility" HeightRequest="100" WidthRequest="80"/>
                     </Frame>
                 </HorizontalStackLayout>
-                <Label Text="{Binding SelectedGameVisibility}"></Label>
             </StackLayout>
 
             <!-- Create Button -->
             <Button Text="Create Game" Command="{Binding CreateGameCommand}" BackgroundColor="Green" TextColor="White" />
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

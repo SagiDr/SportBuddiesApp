@@ -8,184 +8,194 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
-
 using SportBuddiesApp.Models;
 using SportBuddiesApp.Services;
 
 namespace SportBuddiesApp.ViewModels
 {
     public class CreateGameViewModel : ViewModelBase
-{
-    private string _gameType;
-    private DateTime _gameDate;
-    private TimeSpan _gameTime;
-    private string _location;
-    private string _gameMode;
-    private string _gameVisibility;
-    private SportBuddiesWebAPIProxy proxy;
-
-    private string _selectedGameVisibility;
-
-    public CreateGameViewModel(SportBuddiesWebAPIProxy proxy)
     {
-        this.proxy = proxy;
-        GameTypes = new ObservableCollection<string> { "Basketball", "Soccer", "Volleyball" };
-        GameModes = new ObservableCollection<string> { "Casual", "Competitive" };
-        GameVisibilities = new ObservableCollection<string> { "Public", "Private" };
-        GameDate = DateTime.Now;
-        GameTime = TimeSpan.Zero;
-        _gameType = string.Empty;
-        _location = string.Empty;
-        _gameMode = string.Empty;
-        _gameVisibility = string.Empty;
+        private string _gameName;
+        private string _gameType;
+        private DateTime _gameDate;
+        private TimeSpan _gameTime;
+        private string _location;
+        private string _gameMode;
+        private string _gameVisibility;
+        private SportBuddiesWebAPIProxy proxy;
 
-        // Initialize selected visibility to Public (default)
-        _selectedGameVisibility = "Public";
+        private string _selectedGameVisibility;
 
-        // Initialize Commands
-        CreateGameCommand = new Command(OnCreateGame);
-        GetLocationCommand = new Command(async () => await GetLocationAsync());
-    }
-
-    public ObservableCollection<string> GameTypes { get; }
-    public ObservableCollection<string> GameModes { get; }
-    public ObservableCollection<string> GameVisibilities { get; }
-
-    public string GameType
-    {
-        get => _gameType;
-        set
+        public CreateGameViewModel(SportBuddiesWebAPIProxy proxy)
         {
-            _gameType = value;
-            OnPropertyChanged();
+            this.proxy = proxy;
+            GameTypes = new ObservableCollection<string> { "Basketball", "Soccer", "Volleyball" };
+            GameModes = new ObservableCollection<string> { "Casual", "Competitive" };
+            GameVisibilities = new ObservableCollection<string> { "Public", "Private" };
+            GameDate = DateTime.Now;
+            GameTime = TimeSpan.Zero;
+            _gameType = string.Empty;
+            _location = string.Empty;
+            _gameMode = string.Empty;
+            _gameVisibility = string.Empty;
+
+            // Initialize selected visibility to Public (default)
+            _selectedGameVisibility = "Public";
+
+            // Initialize Commands
+            CreateGameCommand = new Command(OnCreateGame);
+            GetLocationCommand = new Command(async () => await GetLocationAsync());
         }
-    }
 
-    public DateTime GameDate
-    {
-        get => _gameDate;
-        set
-        {
-            _gameDate = value;
-            OnPropertyChanged();
-        }
-    }
+        public ObservableCollection<string> GameTypes { get; }
+        public ObservableCollection<string> GameModes { get; }
+        public ObservableCollection<string> GameVisibilities { get; }
 
-    public TimeSpan GameTime
-    {
-        get => _gameTime;
-        set
+        public string GameName
         {
-            _gameTime = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public string Location
-    {
-        get => _location;
-        set
-        {
-            _location = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public string GameMode
-    {
-        get => _gameMode;
-        set
-        {
-            _gameMode = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public string GameVisibility
-    {
-        get => _gameVisibility;
-        set
-        {
-            _gameVisibility = value;
-            OnPropertyChanged();
-        }
-    }
-
-    // Property to hold the selected game visibility (Public/Private)
-    public string SelectedGameVisibility
-    {
-        get => _selectedGameVisibility;
-        set
-        {
-            if (_selectedGameVisibility != value)
+            get => _gameName;
+            set
             {
-                _selectedGameVisibility = value;
-                // Update the GameVisibility whenever the selected visibility changes
-                GameVisibility = _selectedGameVisibility;
+                _gameName = value;
                 OnPropertyChanged();
             }
         }
-    }
 
-    public ICommand CreateGameCommand { get; }
-    public ICommand GetLocationCommand { get; }
-
-    private async Task GetLocationAsync()
-    {
-        try
+        public string GameType
         {
-            var location = await Geolocation.GetLastKnownLocationAsync();
-
-            if (location != null)
+            get => _gameType;
+            set
             {
-                var p = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
-                Placemark? pp = p.FirstOrDefault();
-                if (pp != null)
+                _gameType = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime GameDate
+        {
+            get => _gameDate;
+            set
+            {
+                _gameDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TimeSpan GameTime
+        {
+            get => _gameTime;
+            set
+            {
+                _gameTime = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Location
+        {
+            get => _location;
+            set
+            {
+                _location = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GameMode
+        {
+            get => _gameMode;
+            set
+            {
+                _gameMode = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GameVisibility
+        {
+            get => _gameVisibility;
+            set
+            {
+                _gameVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // Property to hold the selected game visibility (Public/Private)
+        public string SelectedGameVisibility
+        {
+            get => _selectedGameVisibility;
+            set
+            {
+                if (_selectedGameVisibility != value)
                 {
-                    this.Location = pp.Thoroughfare + ", " + pp.Locality + ", " + pp.AdminArea + ", " + pp.CountryName;
+                    _selectedGameVisibility = value;
+                    // Update the GameVisibility whenever the selected visibility changes
+                    GameVisibility = _selectedGameVisibility;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public ICommand CreateGameCommand { get; }
+        public ICommand GetLocationCommand { get; }
+
+        private async Task GetLocationAsync()
+        {
+            try
+            {
+                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                if (location != null)
+                {
+                    var p = await Geocoding.Default.GetPlacemarksAsync(location.Latitude, location.Longitude);
+                    Placemark? pp = p.FirstOrDefault();
+                    if (pp != null)
+                    {
+                        this.Location = pp.Thoroughfare + ", " + pp.Locality + ", " + pp.AdminArea + ", " + pp.CountryName;
+                    }
+                    else
+                        Location = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
                 }
                 else
-                    Location = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}";
+                {
+                    Location = "Unable to get location";
+                }
+            }
+            catch (Exception ex)
+            {
+                Location = $"Error: {ex.Message}";
+            }
+        }
+
+        private async void OnCreateGame()
+        {
+            InServerCall = true;
+
+            var gameDetails = new GameDetails()
+            {
+                GameType = int.TryParse(this.GameType, out int gameType) ? gameType : (int?)null,
+                Location = this.Location,
+                Date = DateOnly.FromDateTime(this.GameDate),
+                Time = TimeOnly.FromTimeSpan(this.GameTime),  // Convert TimeSpan to TimeOnly
+                Competitive = this.GameMode,
+                State = this.GameVisibility,
+                GameName = this.GameName
+            };
+
+            // Directly pass the gameDetails object to the AddGame method
+            GameDetails response = await proxy.AddGame(gameDetails);
+
+            InServerCall = false;
+
+            if (response != null)
+            {
+                Application.Current.MainPage.DisplayAlert("Game Created", "Your game has been created successfully!", "OK");
             }
             else
             {
-                Location = "Unable to get location";
+                Application.Current.MainPage.DisplayAlert("Error", "Failed to create game", "OK");
             }
         }
-        catch (Exception ex)
-        {
-            Location = $"Error: {ex.Message}";
-        }
     }
-
-    private async void OnCreateGame()
-    {
-        InServerCall = true;
-
-        var gameDetails = new GameDetails()
-        {
-            GameType = int.TryParse(this.GameType, out int gameType) ? gameType : (int?)null,
-            Location = this.Location,
-            Date = DateOnly.FromDateTime(this.GameDate),
-            Time = TimeOnly.FromTimeSpan(this.GameTime),  // Convert TimeSpan to TimeOnly
-            Competitive = this.GameMode,
-            State = this.GameVisibility
-        };
-
-        // Directly pass the gameDetails object to the AddGame method
-        GameDetails response = await proxy.AddGame(gameDetails);
-
-        InServerCall = false;
-
-        if (response != null)
-        {
-            Application.Current.MainPage.DisplayAlert("Game Created", "Your game has been created successfully!", "OK");
-        }
-        else
-        {
-            Application.Current.MainPage.DisplayAlert("Error", "Failed to create game", "OK");
-        }
-    }
-}
-
 }
