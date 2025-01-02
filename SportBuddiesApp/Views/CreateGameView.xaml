@@ -11,7 +11,7 @@
             <!-- Game Name -->
             <Label Text="Game name:" FontSize="Medium" TextColor="#333" />
             <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
-             <Entry Text="{Binding GameName}" Placeholder="Enter game name" TextColor="#333" BackgroundColor="White" />
+                <Entry Text="{Binding GameName}" Placeholder="Enter game name" TextColor="#333" BackgroundColor="White" />
             </Frame>
             <!-- Game Type -->
             <Label Text="Select game type:" FontSize="Medium" TextColor="#333" />
@@ -47,10 +47,10 @@
             <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HasShadow="True">
                 <Entry Text="{Binding Location}" Placeholder="Enter location" TextColor="#333" BackgroundColor="White" />
             </Frame>
-            <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" BackgroundColor="#2196F3" TextColor="White" CornerRadius="25" Padding="15" FontAttributes="Bold" />
+            <Button Text="Get Current Location" Command="{Binding GetLocationCommand}" Style="{StaticResource ButtonStyle}" BackgroundColor="#2196F3" />
 
-            <!-- Game Mode -->
-            <Label Text="Select Game Mode:" FontSize="Medium" TextColor="#333" />
+            <!-- Casual/Competitive -->
+            <Label Text="Casual/Competitive:" FontSize="Medium" TextColor="#333" />
             <StackLayout local:RadioButtonGroup.GroupName="GameMode" local:RadioButtonGroup.SelectedValue="{Binding SelectedGameMode}">
                 <HorizontalStackLayout>
                     <Frame Margin="5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
@@ -77,11 +77,7 @@
             </StackLayout>
 
             <!-- Create Button -->
-            <Button Text="Create Game" Command="{Binding CreateGameCommand}" BackgroundColor="Green" TextColor="White" CornerRadius="25" Padding="15" FontAttributes="Bold">
-                <Button.Shadow>
-                    <Shadow Brush="Black" Opacity="0.5" Offset="5,5" Radius="10"/>
-                </Button.Shadow>
-            </Button>
+            <Button Text="Create Game" Command="{Binding CreateGameCommand}" Style="{StaticResource ButtonStyle}"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

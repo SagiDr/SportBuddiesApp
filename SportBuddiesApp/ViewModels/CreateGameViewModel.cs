@@ -140,6 +140,8 @@ namespace SportBuddiesApp.ViewModels
         public ICommand CreateGameCommand { get; }
         public ICommand GetLocationCommand { get; }
 
+
+
         private async Task GetLocationAsync()
         {
             try

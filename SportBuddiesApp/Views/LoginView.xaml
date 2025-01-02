@@ -19,7 +19,7 @@
 
         <Button 
         Text="Login"
-        Command="{Binding LoginCommand}" IsEnabled="{Binding NotInServerCall}"/>
+        Command="{Binding LoginCommand}" IsEnabled="{Binding NotInServerCall}" Style="{StaticResource ButtonStyle}"  />
         <Label Text="{Binding ErrorMsg}" TextColor="Red" HorizontalOptions="Center"></Label>
         <Label 
         Text="Don't have an account? Register"

@@ -80,12 +80,7 @@
             </Grid>
 
                 <!-- Save Button -->
-                <!--<Button Text="Save Changes" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource buttonStyle}" />-->
-                <Button Text="Save Changes" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource buttonStyle}" BackgroundColor="Green" TextColor="White" CornerRadius="25" Padding="15" FontAttributes="Bold">
-                    <Button.Shadow>
-                        <Shadow Brush="Black" Opacity="0.5" Offset="5,5" Radius="10"/>
-                    </Button.Shadow>
-                </Button>
+                <Button Text="Save Changes" Command="{Binding SaveCommand}" IsEnabled="{Binding NotInServerCall}"  Style="{StaticResource ButtonStyle}" />
             </VerticalStackLayout>
         </ScrollView>
         
